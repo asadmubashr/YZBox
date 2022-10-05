@@ -13,6 +13,11 @@
 		18AFBA2228EA90BB006F9E02 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18AFBA2128EA90BB006F9E02 /* Preview Assets.xcassets */; };
 		18AFBA2428EA90BB006F9E02 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFBA2328EA90BB006F9E02 /* Persistence.swift */; };
 		18AFBA2728EA90BB006F9E02 /* YZBox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18AFBA2528EA90BB006F9E02 /* YZBox.xcdatamodeld */; };
+		18AFBA3328EAC421006F9E02 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFBA3228EAC421006F9E02 /* SignInView.swift */; };
+		18AFBA3528EAC889006F9E02 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFBA3428EAC889006F9E02 /* HomeView.swift */; };
+		18AFBA3728EACB57006F9E02 /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFBA3628EACB57006F9E02 /* LogoutView.swift */; };
+		18AFBA3928EACD41006F9E02 /* UpdateNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFBA3828EACD41006F9E02 /* UpdateNicknameView.swift */; };
+		18AFBA3B28ED8950006F9E02 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFBA3A28ED8950006F9E02 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +28,12 @@
 		18AFBA2128EA90BB006F9E02 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18AFBA2328EA90BB006F9E02 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		18AFBA2628EA90BB006F9E02 /* YZBox.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YZBox.xcdatamodel; sourceTree = "<group>"; };
+		18AFBA3128EA921D006F9E02 /* YZBox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YZBox.entitlements; sourceTree = "<group>"; };
+		18AFBA3228EAC421006F9E02 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		18AFBA3428EAC889006F9E02 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		18AFBA3628EACB57006F9E02 /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
+		18AFBA3828EACD41006F9E02 /* UpdateNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNicknameView.swift; sourceTree = "<group>"; };
+		18AFBA3A28ED8950006F9E02 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +66,11 @@
 		18AFBA1928EA90B8006F9E02 /* YZBox */ = {
 			isa = PBXGroup;
 			children = (
+				18AFBA3128EA921D006F9E02 /* YZBox.entitlements */,
+				18AFBA3028EA90D9006F9E02 /* Utilities */,
+				18AFBA2F28EA90D1006F9E02 /* ViewModel */,
+				18AFBA2E28EA90CA006F9E02 /* View */,
+				18AFBA2D28EA90C4006F9E02 /* Model */,
 				18AFBA1A28EA90B8006F9E02 /* YZBoxApp.swift */,
 				18AFBA1C28EA90B8006F9E02 /* ContentView.swift */,
 				18AFBA1E28EA90BB006F9E02 /* Assets.xcassets */,
@@ -71,6 +87,39 @@
 				18AFBA2128EA90BB006F9E02 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		18AFBA2D28EA90C4006F9E02 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18AFBA3A28ED8950006F9E02 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18AFBA2E28EA90CA006F9E02 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18AFBA3228EAC421006F9E02 /* SignInView.swift */,
+				18AFBA3428EAC889006F9E02 /* HomeView.swift */,
+				18AFBA3628EACB57006F9E02 /* LogoutView.swift */,
+				18AFBA3828EACD41006F9E02 /* UpdateNicknameView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18AFBA2F28EA90D1006F9E02 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		18AFBA3028EA90D9006F9E02 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,7 +195,12 @@
 				18AFBA2428EA90BB006F9E02 /* Persistence.swift in Sources */,
 				18AFBA1D28EA90B8006F9E02 /* ContentView.swift in Sources */,
 				18AFBA2728EA90BB006F9E02 /* YZBox.xcdatamodeld in Sources */,
+				18AFBA3528EAC889006F9E02 /* HomeView.swift in Sources */,
 				18AFBA1B28EA90B8006F9E02 /* YZBoxApp.swift in Sources */,
+				18AFBA3B28ED8950006F9E02 /* User.swift in Sources */,
+				18AFBA3728EACB57006F9E02 /* LogoutView.swift in Sources */,
+				18AFBA3328EAC421006F9E02 /* SignInView.swift in Sources */,
+				18AFBA3928EACD41006F9E02 /* UpdateNicknameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,10 +326,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = YZBox/YZBox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"YZBox/Preview Content\"";
-				DEVELOPMENT_TEAM = 29GTA5TYS7;
+				DEVELOPMENT_TEAM = VXLMFFGK4Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -288,7 +343,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.asad.YZBox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.asadj.YZBox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -301,10 +356,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = YZBox/YZBox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"YZBox/Preview Content\"";
-				DEVELOPMENT_TEAM = 29GTA5TYS7;
+				DEVELOPMENT_TEAM = VXLMFFGK4Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -317,7 +373,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.asad.YZBox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.asadj.YZBox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
