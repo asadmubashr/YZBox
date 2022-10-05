@@ -19,7 +19,7 @@ struct LogoutView: View {
     
     var body: some View {
         if isHomeView {
-            HomeView()
+            SignInView()
         }
         else {
             GeometryReader { geo in
@@ -47,8 +47,8 @@ struct LogoutView: View {
                             VStack {
                                 profileImage
                                     .resizable()
-                                    .scaledToFit()
                                     .frame(width: 120, height: 120)
+                                    .clipShape(Circle())
                                 Text(name)
                                     .bold()
                             }
@@ -100,6 +100,9 @@ struct LogoutView: View {
                     
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .onAppear(perform: {
+                    getImageFromName()
+                })
             }
         }
     }
@@ -126,6 +129,22 @@ struct LogoutView: View {
         }
         catch let error as NSError{
             fatalError("Couldn't fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func getImageFromName() {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileName = UserDefaults.standard.string(forKey: "user_id") ?? "profile"
+        let url = documentsDirectory.appendingPathComponent(fileName)
+        
+        if let imageData = try? Data(contentsOf: url) {
+            let uiImage = UIImage(data: imageData)
+            if uiImage != nil {
+                profileImage = Image(uiImage: uiImage!)
+            }
+            
+        } else {
+            print("Couldn't get image for \(fileName)")
         }
     }
 }

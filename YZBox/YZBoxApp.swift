@@ -13,7 +13,7 @@ struct YZBoxApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SignInView()
+            HomeView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

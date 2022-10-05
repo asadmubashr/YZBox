@@ -103,6 +103,9 @@ struct HomeView: View {
             .sheet(isPresented: $showingProfileImagePicker) {
                 ImagePicker(image: $profileUIImage)
             }
+            .onAppear(perform: {
+                getImageFromName()
+            })
         }
         .fullScreenCover(isPresented: $isLogoutView, content: LogoutView.init)
         .fullScreenCover(isPresented: $isUpdateNicknameView, content: UpdateNicknameView.init)
@@ -112,6 +115,44 @@ struct HomeView: View {
     func loadProfileImage() {
         guard let inputImage = profileUIImage else { return }
         profileImage = Image(uiImage: inputImage)
+        if profileUIImage != nil {
+            saveImageLocally(image: profileUIImage!)
+        }
+        
+    }
+    
+    func saveImageLocally(image: UIImage) {
+        
+     // Obtaining the Location of the Documents Directory
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        
+        // Creating a URL to the name of your file
+        let fileName = UserDefaults.standard.string(forKey: "user_id") ?? "profile"
+        let url = documentsDirectory.appendingPathComponent(fileName)
+        
+        if let data = image.pngData() {
+            do {
+                try data.write(to: url) // Writing an Image in the Documents Directory
+            } catch {
+                print("Unable to Write \(fileName) Image Data to Disk")
+            }
+        }
+    }
+    
+    func getImageFromName() {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileName = UserDefaults.standard.string(forKey: "user_id") ?? "profile"
+        let url = documentsDirectory.appendingPathComponent(fileName)
+        
+        if let imageData = try? Data(contentsOf: url) {
+            let uiImage = UIImage(data: imageData)
+            if uiImage != nil {
+                profileImage = Image(uiImage: uiImage!)
+            }
+            
+        } else {
+            print("Couldn't get image for \(fileName)")
+        }
     }
 }
 

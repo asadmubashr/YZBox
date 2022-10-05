@@ -11,7 +11,7 @@ struct UpdateNicknameView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State private var profileImage: Image = Image(systemName: "person.circle")
-    @State private var name: String = "Dr.Who"
+    @State private var name: String = (UserDefaults.standard.string(forKey: "first_name")) ?? "Dr." + " " + (UserDefaults.standard.string(forKey: "last_name") ?? "Who")
     
     @State private var nickname: String = ""
     
@@ -41,8 +41,8 @@ struct UpdateNicknameView: View {
                         VStack {
                             profileImage
                                 .resizable()
-                                .scaledToFit()
                                 .frame(width: 120, height: 120)
+                                .clipShape(Circle())
                             Text(name)
                                 .bold()
                         }
@@ -85,6 +85,25 @@ struct UpdateNicknameView: View {
                 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .onAppear(perform: {
+                getImageFromName()
+            })
+        }
+    }
+    
+    func getImageFromName() {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileName = UserDefaults.standard.string(forKey: "user_id") ?? "profile"
+        let url = documentsDirectory.appendingPathComponent(fileName)
+        
+        if let imageData = try? Data(contentsOf: url) {
+            let uiImage = UIImage(data: imageData)
+            if uiImage != nil {
+                profileImage = Image(uiImage: uiImage!)
+            }
+            
+        } else {
+            print("Couldn't get image for \(fileName)")
         }
     }
 }
