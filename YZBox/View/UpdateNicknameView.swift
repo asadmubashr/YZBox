@@ -65,7 +65,7 @@ struct UpdateNicknameView: View {
                             
                             Text("Save")
                                 .frame(maxWidth: geo.size.width * 0.75)
-                                .frame(height: 60)
+                                .frame(height: 40)
                                 .background(Color.pink)
                                 .foregroundColor(Color.white)
                                 .cornerRadius(10)

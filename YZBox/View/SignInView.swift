@@ -60,6 +60,8 @@ struct SignInView: View {
                                             
                                                 print("TOKEN: \(tokenString)")
                                                 print("USER: \(user)")
+                                                
+                                                PFUser.register(AuthDelegate(), forAuthType: "apple")
                                             
                                             
                                                 PFUser.logInWithAuthType(inBackground: "apple", authData: ["token":tokenString, "id": user]).continueWith { task -> Any? in
@@ -203,3 +205,13 @@ struct SignInView_Previews: PreviewProvider {
     }
 }
 
+
+class AuthDelegate:NSObject, PFUserAuthenticationDelegate {
+    func restoreAuthentication(withAuthData authData: [String : String]?) -> Bool {
+        return true
+    }
+    
+    func restoreAuthenticationWithAuthData(authData: [String : String]?) -> Bool {
+        return true
+    }
+}

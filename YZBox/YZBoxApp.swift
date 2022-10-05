@@ -32,7 +32,7 @@ struct YZBoxApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TabsView()
+            SignInView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import Parse
 
 struct LogoutView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -58,7 +59,9 @@ struct LogoutView: View {
                             Text("Upgrade Pro")
                                 .frame(maxWidth: geo.size.width * 0.75)
                                 .frame(height: 40)
-                                .background(Color.pink)
+                                .background(
+                                    LinearGradient(gradient: Gradient(colors: [.purple, .gray]), startPoint: .leading, endPoint: .trailing)
+                                )
                                 .foregroundColor(Color.white)
                                 .cornerRadius(10)
                                 
@@ -66,17 +69,18 @@ struct LogoutView: View {
                             Text("Log Out")
                                 .frame(maxWidth: geo.size.width * 0.75)
                                 .frame(height: 40)
-                                .background(Color.pink)
+                                .background(Color.gray)
                                 .foregroundColor(Color.white)
                                 .cornerRadius(10)
                                 .onTapGesture(perform: {
+                                    PFUser.logOut()
                                     isHomeView = true
                                 })
                             
                             Text("Delete Account")
                                 .frame(maxWidth: geo.size.width * 0.75)
                                 .frame(height: 40)
-                                .background(Color.pink)
+                                .background(Color.gray.opacity(0.8))
                                 .foregroundColor(Color.white)
                                 .cornerRadius(10)
                                 .onTapGesture(perform: {
