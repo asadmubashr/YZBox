@@ -18,92 +18,87 @@ struct LogoutView: View {
     @State private var isHomeView: Bool = false
     
     var body: some View {
-        if isHomeView {
-            SignInView()
-        }
-        else {
-            GeometryReader { geo in
-                ZStack {
+        GeometryReader { geo in
+            ZStack {
+                VStack {
+                    // top
                     VStack {
-                        // top
-                        VStack {
-                            HStack {
-                                Image(systemName: "arrow.backward")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 30, height: 30)
-                                    .onTapGesture(perform: {
-                                        presentationMode.wrappedValue.dismiss()
-                                    })
-                                
-                                Spacer()
-                            }
-                            .padding([.leading])
+                        HStack {
+                            Image(systemName: "arrow.backward")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                                .onTapGesture(perform: {
+                                    presentationMode.wrappedValue.dismiss()
+                                })
+                            
+                            Spacer()
                         }
-                        .frame(maxWidth: .infinity, maxHeight: geo.size.height * 0.05)
-                        //.border(Color.green)
-                        
-                        VStack {
-                            VStack {
-                                profileImage
-                                    .resizable()
-                                    .frame(width: 120, height: 120)
-                                    .clipShape(Circle())
-                                Text(name)
-                                    .bold()
-                            }
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: geo.size.height * 0.35)
-                        //.border(Color.green)
-                        
-                        // center
-                        VStack {
-                            VStack {
-                                Text("Upgrade Pro")
-                                    .frame(maxWidth: geo.size.width * 0.75)
-                                    .frame(height: 60)
-                                    .background(Color.pink)
-                                    .foregroundColor(Color.white)
-                                    .cornerRadius(10)
-                                    
-                                Spacer()
-                                Text("Log Out")
-                                    .frame(maxWidth: geo.size.width * 0.75)
-                                    .frame(height: 60)
-                                    .background(Color.pink)
-                                    .foregroundColor(Color.white)
-                                    .cornerRadius(10)
-                                    .onTapGesture(perform: {
-                                        isHomeView = true
-                                    })
-                                
-                                Text("Delete Account")
-                                    .frame(maxWidth: geo.size.width * 0.75)
-                                    .frame(height: 60)
-                                    .background(Color.pink)
-                                    .foregroundColor(Color.white)
-                                    .cornerRadius(10)
-                                    .onTapGesture(perform: {
-                                        deleteAccount()
-                                        isHomeView = true
-                                    })
-                            }
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: geo.size.height * 0.50)
-                        //.border(Color.blue)
-                        
-                        
-                        // bottom
-                        
-                        Spacer()
+                        .padding([.leading])
                     }
+                    .frame(maxWidth: .infinity, maxHeight: geo.size.height * 0.05)
+                    //.border(Color.green)
                     
+                    VStack {
+                        VStack {
+                            profileImage
+                                .resizable()
+                                .frame(width: 120, height: 120)
+                                .clipShape(Circle())
+                            Text(name)
+                                .bold()
+                        }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: geo.size.height * 0.35)
+                    //.border(Color.green)
+                    
+                    // center
+                    VStack {
+                        VStack {
+                            Text("Upgrade Pro")
+                                .frame(maxWidth: geo.size.width * 0.75)
+                                .frame(height: 40)
+                                .background(Color.pink)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(10)
+                                
+                            Spacer()
+                            Text("Log Out")
+                                .frame(maxWidth: geo.size.width * 0.75)
+                                .frame(height: 40)
+                                .background(Color.pink)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(10)
+                                .onTapGesture(perform: {
+                                    isHomeView = true
+                                })
+                            
+                            Text("Delete Account")
+                                .frame(maxWidth: geo.size.width * 0.75)
+                                .frame(height: 40)
+                                .background(Color.pink)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(10)
+                                .onTapGesture(perform: {
+                                    deleteAccount()
+                                    isHomeView = true
+                                })
+                        }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: geo.size.height * 0.50)
+                    //.border(Color.blue)
+                    
+                    
+                    // bottom
+                    
+                    Spacer()
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .onAppear(perform: {
-                    getImageFromName()
-                })
+                
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .onAppear(perform: {
+                getImageFromName()
+            })
         }
     }
     

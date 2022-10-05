@@ -18,6 +18,8 @@
 		18AFBA3728EACB57006F9E02 /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFBA3628EACB57006F9E02 /* LogoutView.swift */; };
 		18AFBA3928EACD41006F9E02 /* UpdateNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFBA3828EACD41006F9E02 /* UpdateNicknameView.swift */; };
 		18AFBA3B28ED8950006F9E02 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFBA3A28ED8950006F9E02 /* User.swift */; };
+		18AFBA4428EDFFDD006F9E02 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFBA4328EDFFDD006F9E02 /* TabsView.swift */; };
+		49AFADFCBA6EA8617BFB36A8 /* Pods_YZBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7BCD58BDF5558F0836E7B4 /* Pods_YZBox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,10 @@
 		18AFBA3628EACB57006F9E02 /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
 		18AFBA3828EACD41006F9E02 /* UpdateNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNicknameView.swift; sourceTree = "<group>"; };
 		18AFBA3A28ED8950006F9E02 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		18AFBA4328EDFFDD006F9E02 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
+		5668E37570BD5DCE8770CC7C /* Pods-YZBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZBox.release.xcconfig"; path = "Target Support Files/Pods-YZBox/Pods-YZBox.release.xcconfig"; sourceTree = "<group>"; };
+		6A7BCD58BDF5558F0836E7B4 /* Pods_YZBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YZBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F25482A025571996834B9F9D /* Pods-YZBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZBox.debug.xcconfig"; path = "Target Support Files/Pods-YZBox/Pods-YZBox.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +47,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49AFADFCBA6EA8617BFB36A8 /* Pods_YZBox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06023A2EBEEE8F6594FFC349 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A7BCD58BDF5558F0836E7B4 /* Pods_YZBox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		18AFBA0E28EA90B8006F9E02 = {
 			isa = PBXGroup;
 			children = (
 				18AFBA1928EA90B8006F9E02 /* YZBox */,
 				18AFBA1828EA90B8006F9E02 /* Products */,
+				EF71F23B4751F7EC53CAF9E2 /* Pods */,
+				06023A2EBEEE8F6594FFC349 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				18AFBA3228EAC421006F9E02 /* SignInView.swift */,
+				18AFBA4328EDFFDD006F9E02 /* TabsView.swift */,
 				18AFBA3428EAC889006F9E02 /* HomeView.swift */,
 				18AFBA3628EACB57006F9E02 /* LogoutView.swift */,
 				18AFBA3828EACD41006F9E02 /* UpdateNicknameView.swift */,
@@ -122,6 +140,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		EF71F23B4751F7EC53CAF9E2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F25482A025571996834B9F9D /* Pods-YZBox.debug.xcconfig */,
+				5668E37570BD5DCE8770CC7C /* Pods-YZBox.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,9 +156,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18AFBA2A28EA90BB006F9E02 /* Build configuration list for PBXNativeTarget "YZBox" */;
 			buildPhases = (
+				B6C203DD7A0EA5441A0F6494 /* [CP] Check Pods Manifest.lock */,
 				18AFBA1328EA90B8006F9E02 /* Sources */,
 				18AFBA1428EA90B8006F9E02 /* Frameworks */,
 				18AFBA1528EA90B8006F9E02 /* Resources */,
+				392827335573B914D751C46E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -187,6 +216,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		392827335573B914D751C46E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YZBox/Pods-YZBox-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YZBox/Pods-YZBox-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YZBox/Pods-YZBox-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6C203DD7A0EA5441A0F6494 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YZBox-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		18AFBA1328EA90B8006F9E02 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -196,6 +267,7 @@
 				18AFBA1D28EA90B8006F9E02 /* ContentView.swift in Sources */,
 				18AFBA2728EA90BB006F9E02 /* YZBox.xcdatamodeld in Sources */,
 				18AFBA3528EAC889006F9E02 /* HomeView.swift in Sources */,
+				18AFBA4428EDFFDD006F9E02 /* TabsView.swift in Sources */,
 				18AFBA1B28EA90B8006F9E02 /* YZBoxApp.swift in Sources */,
 				18AFBA3B28ED8950006F9E02 /* User.swift in Sources */,
 				18AFBA3728EACB57006F9E02 /* LogoutView.swift in Sources */,
@@ -323,6 +395,7 @@
 		};
 		18AFBA2B28EA90BB006F9E02 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F25482A025571996834B9F9D /* Pods-YZBox.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -338,6 +411,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -353,6 +427,7 @@
 		};
 		18AFBA2C28EA90BB006F9E02 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5668E37570BD5DCE8770CC7C /* Pods-YZBox.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -368,6 +443,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

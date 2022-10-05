@@ -55,7 +55,7 @@ struct UpdateNicknameView: View {
                         VStack {
                             TextField("Nickname", text: $nickname)
                                 .frame(maxWidth: geo.size.width * 0.75)
-                                .frame(height: 60)
+                                .frame(height: 40)
                                 .foregroundColor(Color.gray)
                                 .padding([.leading])
                                 .border(Color.gray, width: 2)

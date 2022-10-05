@@ -51,51 +51,6 @@ struct HomeView: View {
                     .padding()
                     //center
                     Spacer()
-                    //bottom
-                    HStack {
-                        VStack {
-                            Image(systemName: "circle")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 40, height: 40)
-                            Text("LearnMode")
-                                .font(.system(size: 14))
-                        }
-                        .frame(maxWidth: geo.size.width * 0.20)
-                        
-                        VStack {
-                            Image(systemName: "circle")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 40, height: 40)
-                            Text("Eg-Cn")
-                                .font(.system(size: 14))
-                        }
-                        .frame(maxWidth: geo.size.width * 0.20)
-                        
-                        VStack {
-                            Image(systemName: "circle")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 40, height: 40)
-                            Text("Cn-Eg")
-                                .font(.system(size: 14))
-                        }
-                        .frame(maxWidth: geo.size.width * 0.20)
-                        
-                        VStack {
-                            profileImage
-                                .resizable()
-                                .frame(width: 60, height: 60)
-                                .clipShape(Circle())
-                            Text("Mine")
-                                .font(.system(size: 14))
-                        }
-                        .frame(maxWidth: geo.size.width * 0.20)
-                    }
-                    .frame(maxWidth:.infinity)
-                    .padding()
-                    
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

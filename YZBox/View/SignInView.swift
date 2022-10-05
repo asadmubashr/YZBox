@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import Parse
 import AuthenticationServices
 
 struct SignInView: View {
@@ -22,7 +23,7 @@ struct SignInView: View {
     
     var body: some View {
         if isHomeView {
-            HomeView()
+            TabsView()
         }
         else {
             GeometryReader { geo in
@@ -49,29 +50,48 @@ struct SignInView: View {
                                     request.requestedScopes = [.email, .fullName]
                                 } onCompletion: { result in
                                     switch(result) {
-                                    case .success(let auth):
-                                        switch(auth.credential) {
-                                        case let authCredential as ASAuthorizationAppleIDCredential:
-                                            let userId = authCredential.user
+                                        case .success(let auth):
+                                            switch(auth.credential) {
+                                                case let authCredential as ASAuthorizationAppleIDCredential:
                                             
-                                            let email = authCredential.email
-                                            let firstName = authCredential.fullName?.givenName
-                                            let lastName = authCredential.fullName?.familyName
+                                                let token = authCredential.identityToken!
+                                                let tokenString = String(data: token, encoding: .utf8)!
+                                                let user = authCredential.user
                                             
-                                            addUser(user: User(userId: userId, email: email, firstName: firstName, lastName: lastName))
+                                                print("TOKEN: \(tokenString)")
+                                                print("USER: \(user)")
                                             
-                                            isHomeView = true
-                                            break
-                                        default:
-                                            break
+                                            
+                                                PFUser.logInWithAuthType(inBackground: "apple", authData: ["token":tokenString, "id": user]).continueWith { task -> Any? in
+                                                
+                                                    if task.result != nil {
+                                                        let userId = authCredential.user
+                                                    
+                                                        let email = authCredential.email
+                                                        let firstName = authCredential.fullName?.givenName
+                                                        let lastName = authCredential.fullName?.familyName
+                                                    
+                                                        addUser(user: User(userId: userId, email: email, firstName: firstName, lastName: lastName))
+                                                    
+                                                        isHomeView = true
+                                                        print("LOGGED IN PARSE")
+                                                    } else {
+                                                    // Failed to log in.
+                                                        print("ERROR LOGGING IN IN PARSE: \(task.error?.localizedDescription)")
+                                                    }
+                                                    return nil
+                                                }
+                                                break
+                                            default:
+                                                break
                                         }
-                                        break
-                                    case.failure(let error):
-                                        print(error)
+                                        case .failure(let error):
+                                            print(error)
+                                            break
                                     }
                                 }
                                 .frame(maxWidth: geo.size.width * 0.75)
-                                .frame(height: 60)
+                                .frame(height: 40)
                                 .cornerRadius(10)
                                 
 //                                Text("Sign In with Apple")
@@ -102,10 +122,26 @@ struct SignInView: View {
                     
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .onAppear(perform: {
+                    testParseConnection()
+                })
             }
         }
         
         
+        
+        }
+    
+    func testParseConnection(){
+        let myObj = PFObject(className:"FirstClass")
+        myObj["message"] = "Hey ! First message from Swift. Parse is now connected"
+        myObj.saveInBackground { (success, error) in
+            if(success){
+                print("You are connected!")
+            }else{
+                print("An error has occurred!")
+            }
+        }
     }
     
     private func addUser(user: User) {
@@ -157,9 +193,13 @@ struct SignInView: View {
         
     }
 }
+    
+    
+
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         SignInView()
     }
 }
+
