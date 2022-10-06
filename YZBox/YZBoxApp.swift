@@ -27,13 +27,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 @main
 struct YZBoxApp: App {
+    @StateObject var userStateViewModel = UserStateViewModel()
+    
     let persistenceController = PersistenceController.shared
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     var body: some Scene {
         WindowGroup {
-            SignInView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            NavigationView{
+                ApplicationSwitcher()
+            }
+            .navigationViewStyle(.stack)
+            .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            .environmentObject(userStateViewModel)
         }
+    }
+}
+
+struct ApplicationSwitcher: View {
+    
+    @EnvironmentObject var vm: UserStateViewModel
+    
+    var body: some View {
+        if (vm.isLoggedIn) {
+                TabsView()
+        } else {
+            SignInView()
+        }
+        
     }
 }

@@ -19,6 +19,8 @@
 		18AFBA3928EACD41006F9E02 /* UpdateNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFBA3828EACD41006F9E02 /* UpdateNicknameView.swift */; };
 		18AFBA3B28ED8950006F9E02 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFBA3A28ED8950006F9E02 /* User.swift */; };
 		18AFBA4428EDFFDD006F9E02 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFBA4328EDFFDD006F9E02 /* TabsView.swift */; };
+		18AFD99F28EF261E0088D91C /* AuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFD99E28EF261E0088D91C /* AuthDelegate.swift */; };
+		18AFD9A128EF6D750088D91C /* UserStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFD9A028EF6D750088D91C /* UserStateViewModel.swift */; };
 		49AFADFCBA6EA8617BFB36A8 /* Pods_YZBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7BCD58BDF5558F0836E7B4 /* Pods_YZBox.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		18AFBA3828EACD41006F9E02 /* UpdateNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNicknameView.swift; sourceTree = "<group>"; };
 		18AFBA3A28ED8950006F9E02 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		18AFBA4328EDFFDD006F9E02 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
+		18AFD99E28EF261E0088D91C /* AuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDelegate.swift; sourceTree = "<group>"; };
+		18AFD9A028EF6D750088D91C /* UserStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModel.swift; sourceTree = "<group>"; };
 		5668E37570BD5DCE8770CC7C /* Pods-YZBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZBox.release.xcconfig"; path = "Target Support Files/Pods-YZBox/Pods-YZBox.release.xcconfig"; sourceTree = "<group>"; };
 		6A7BCD58BDF5558F0836E7B4 /* Pods_YZBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YZBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F25482A025571996834B9F9D /* Pods-YZBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZBox.debug.xcconfig"; path = "Target Support Files/Pods-YZBox/Pods-YZBox.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 				18AFBA3428EAC889006F9E02 /* HomeView.swift */,
 				18AFBA3628EACB57006F9E02 /* LogoutView.swift */,
 				18AFBA3828EACD41006F9E02 /* UpdateNicknameView.swift */,
+				18AFD99E28EF261E0088D91C /* AuthDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 		18AFBA2F28EA90D1006F9E02 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				18AFD9A028EF6D750088D91C /* UserStateViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -266,6 +272,7 @@
 				18AFBA2428EA90BB006F9E02 /* Persistence.swift in Sources */,
 				18AFBA1D28EA90B8006F9E02 /* ContentView.swift in Sources */,
 				18AFBA2728EA90BB006F9E02 /* YZBox.xcdatamodeld in Sources */,
+				18AFD9A128EF6D750088D91C /* UserStateViewModel.swift in Sources */,
 				18AFBA3528EAC889006F9E02 /* HomeView.swift in Sources */,
 				18AFBA4428EDFFDD006F9E02 /* TabsView.swift in Sources */,
 				18AFBA1B28EA90B8006F9E02 /* YZBoxApp.swift in Sources */,
@@ -273,6 +280,7 @@
 				18AFBA3728EACB57006F9E02 /* LogoutView.swift in Sources */,
 				18AFBA3328EAC421006F9E02 /* SignInView.swift in Sources */,
 				18AFBA3928EACD41006F9E02 /* UpdateNicknameView.swift in Sources */,
+				18AFD99F28EF261E0088D91C /* AuthDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

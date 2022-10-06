@@ -68,11 +68,11 @@ struct TabsView: View {
     }
 }
 
-struct TabsView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabsView()
-    }
-}
+//struct TabsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TabsView()
+//    }
+//}
 
 
 struct OtherView: View {

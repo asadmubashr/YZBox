@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import Parse
 
 struct UpdateNicknameView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var profileImage: Image = Image(systemName: "person.circle")
-    @State private var name: String = (UserDefaults.standard.string(forKey: "first_name")) ?? "Dr." + " " + (UserDefaults.standard.string(forKey: "last_name") ?? "Who")
+    @Binding var profileImage: Image
+    @Binding var name: String
     
     @State private var nickname: String = ""
     
@@ -59,18 +60,18 @@ struct UpdateNicknameView: View {
                                 .foregroundColor(Color.gray)
                                 .padding([.leading])
                                 .border(Color.gray, width: 2)
-                                .cornerRadius(5)
                                 
                             Spacer()
                             
                             Text("Save")
                                 .frame(maxWidth: geo.size.width * 0.75)
                                 .frame(height: 40)
-                                .background(Color.pink)
+                                .background(Color.purple)
                                 .foregroundColor(Color.white)
-                                .cornerRadius(10)
                                 .onTapGesture(perform: {
-                                    
+                                    if nickname != "" {
+                                        updateParseNickname()
+                                    }
                                 })
                         }
                     }
@@ -106,10 +107,25 @@ struct UpdateNicknameView: View {
             print("Couldn't get image for \(fileName)")
         }
     }
-}
-
-struct UpdateNicknameView_Previews: PreviewProvider {
-    static var previews: some View {
-        UpdateNicknameView()
+    
+    func updateParseNickname(){
+        let myObj = PFQuery(className:"Users")
+        myObj.whereKey("userId", equalTo: UserDefaults.standard.string(forKey: "user_id") ?? "profile")
+        myObj.getFirstObjectInBackground { (user: PFObject?, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let user = user {
+                user["firstName"] = nickname
+                name = nickname
+                UserDefaults.standard.set(nickname, forKey: "first_name")
+                user.saveInBackground()
+            }
+        }
     }
 }
+
+//struct UpdateNicknameView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UpdateNicknameView()
+//    }
+//}

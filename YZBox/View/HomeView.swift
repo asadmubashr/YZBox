@@ -62,8 +62,8 @@ struct HomeView: View {
                 getImageFromName()
             })
         }
-        .fullScreenCover(isPresented: $isLogoutView, content: LogoutView.init)
-        .fullScreenCover(isPresented: $isUpdateNicknameView, content: UpdateNicknameView.init)
+        .fullScreenCover(isPresented: $isLogoutView, content: {LogoutView(profileImage: $profileImage, name: $name)})
+        .fullScreenCover(isPresented: $isUpdateNicknameView, content: {UpdateNicknameView(profileImage: $profileImage, name: $name)})
         
     }
     
@@ -111,11 +111,11 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView()
+//    }
+//}
 
 
 

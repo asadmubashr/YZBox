@@ -13,10 +13,10 @@ struct LogoutView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var profileImage: Image = Image(systemName: "person.circle")
-    @State private var name: String = "Dr.Who"
+    @Binding var profileImage: Image
+    @Binding var name: String
     
-    @State private var isHomeView: Bool = false
+    @EnvironmentObject var vm: UserStateViewModel
     
     var body: some View {
         GeometryReader { geo in
@@ -74,7 +74,8 @@ struct LogoutView: View {
                                 .cornerRadius(10)
                                 .onTapGesture(perform: {
                                     PFUser.logOut()
-                                    isHomeView = true
+                                    vm.isSessionWorking = true
+                                    vm.isLoggedIn = false
                                 })
                             
                             Text("Delete Account")
@@ -85,7 +86,8 @@ struct LogoutView: View {
                                 .cornerRadius(10)
                                 .onTapGesture(perform: {
                                     deleteAccount()
-                                    isHomeView = true
+                                    vm.isSessionWorking = true
+                                    vm.isLoggedIn = false
                                 })
                         }
                     }
@@ -104,32 +106,35 @@ struct LogoutView: View {
                 getImageFromName()
             })
         }
+        
+    }
+    
+    func updateParseActive(){
+        let myObj = PFObject(className:"Users")
+        myObj["active"] = false
+        myObj.saveInBackground { (success, error) in
+            if(success){
+                print("You are connected!")
+            }else{
+                print("An error has occurred!")
+            }
+        }
     }
     
     private func deleteAccount() {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "YZBox_user")
-        fetchRequest.predicate = NSPredicate(format: "%K == %@", argumentArray: ["user_id", UserDefaults.standard.string(forKey: "user_id")!])
-        
-        do {
-            let test = try self.viewContext.fetch(fetchRequest)
-            
-            if test.count > 0 {
-                let objectUpdate = test[0] as! NSManagedObject
-                objectUpdate.setValue(false, forKey: "active")
-                
-                do {
-                    try self.viewContext.save()
-                } catch {
-                    let nsError = error as NSError
-                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                }
+        let myObj = PFQuery(className:"Users")
+        myObj.whereKey("userId", equalTo: UserDefaults.standard.string(forKey: "user_id") ?? "profile")
+        myObj.getFirstObjectInBackground { (user: PFObject?, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let user = user {
+                user["active"] = false
+                user.saveInBackground()
             }
-            
-        }
-        catch let error as NSError{
-            fatalError("Couldn't fetch. \(error), \(error.userInfo)")
         }
     }
+    
+    
     
     func getImageFromName() {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -148,8 +153,8 @@ struct LogoutView: View {
     }
 }
 
-struct LogoutView_Previews: PreviewProvider {
-    static var previews: some View {
-        LogoutView()
-    }
-}
+//struct LogoutView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LogoutView()
+//    }
+//}
